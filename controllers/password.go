@@ -96,7 +96,7 @@ func CreateLogin(c *gin.Context) {
 //GetSingleLogin request
 func GetSingleLogin(c *gin.Context) {
 	loginWebsite := c.Param("loginWebsite")
-	var login []Login
+	var login Login
 	query := "website='" + loginWebsite + "'"
 	err := dbConnect.Model(&login).Where(query).Select()
 	if err != nil {
@@ -143,9 +143,19 @@ func EditLogin(c *gin.Context) {
 
 //DeleteLogin request
 func DeleteLogin(c *gin.Context) {
-	loginID := c.Param("loginId")
-	login := &Login{ID: loginID}
-	err := dbConnect.Delete(login)
+	loginWebsite := c.Param("loginWebsite")
+	var login Login
+	query := "website='" + loginWebsite + "'"
+	findErr := dbConnect.Model(&login).Where(query).Select()
+	if findErr != nil {
+		log.Printf("Error while getting a single login, Reason: %v\n", findErr)
+		c.JSON(http.StatusNotFound, gin.H{
+			"status":  http.StatusNotFound,
+			"message": "Login not found",
+		})
+		return
+	}
+	_, err := dbConnect.Model(&login).Where("website = ?", loginWebsite).Delete()
 	if err != nil {
 		log.Printf("Error while deleting a single login, Reason: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{
