@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Button } from "@material-ui/core";
 
 const Logins = ({ logins }) => {
   const classes = useStyles();
@@ -25,6 +26,10 @@ const Logins = ({ logins }) => {
           {logins.map((login) => (
             <TableRow>
               <TableCell component="th" scope="row">
+                <Button variant="outlined" color="secondary">
+                  fuck
+                </Button>
+                {"    "}
                 {login.website ? login.website : "none"}
               </TableCell>
               <TableCell align="right">
@@ -34,7 +39,7 @@ const Logins = ({ logins }) => {
                 {login.password ? (
                   <div>
                     <CopyToClipboard text={login.password}>
-                      <button>Copy to Clipboard</button>
+                      <Button variant="outlined">Copy to Clipboard</Button>
                     </CopyToClipboard>
                     {"    "}
                     {login.password}

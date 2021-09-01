@@ -69,7 +69,7 @@ function App() {
       <Button
         className={classes.generator}
         variant="contained"
-        color="secondary"
+        color="primary"
         onClick={createPassword}
       >
         submit
