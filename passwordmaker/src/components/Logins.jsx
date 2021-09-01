@@ -1,0 +1,45 @@
+import { useStyles } from "../Style";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
+const Logins = ({ logins }) => {
+  const classes = useStyles();
+
+  return (
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Website</TableCell>
+            <TableCell align="right">Username</TableCell>
+            <TableCell align="right">Password</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {logins.map((login) => (
+            <TableRow>
+              <TableCell component="th" scope="row">
+                {login.website}
+              </TableCell>
+              <TableCell align="right">{login.username}</TableCell>
+              <TableCell align="right">
+                <CopyToClipboard text={login.password}>
+                  <button>Copy to Clipboard</button>
+                </CopyToClipboard>{" "}
+                {login.password}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
+
+export default Logins;

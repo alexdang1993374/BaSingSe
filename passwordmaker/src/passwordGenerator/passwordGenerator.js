@@ -67,7 +67,6 @@ export const generator = () => {
     password += nums[_.random(nums.length - 1)];
     password += symbols[_.random(symbols.length - 1)];
     password += uppercaseLetters[_.random(uppercaseLetters.length - 1)];
-    console.log(password);
   }
 
   let arr = _.shuffle(password.split(""));

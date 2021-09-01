@@ -7,4 +7,7 @@ export const useStyles = makeStyles({
     margin: "3rem",
     display: "grid",
   },
+  table: {
+    minWidth: 650,
+  },
 });

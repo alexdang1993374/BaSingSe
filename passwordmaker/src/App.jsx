@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "./components/InputField";
+import Logins from "./components/Logins";
+import seed from "./Seeder";
 import { generator } from "./passwordGenerator/passwordGenerator";
 import { useStyles } from "./Style";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import axios from "axios";
 
 function App() {
@@ -10,9 +12,24 @@ function App() {
   const [password, setPassword] = useState("");
   const [website, setWebsite] = useState("");
   const [username, setUsername] = useState("");
+  const [logins, setLogins] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/login")
+      .then((res) => {
+        setLogins(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // setLogins(seed());
+  }, []);
 
   const generate = () => {
     setPassword(generator());
+    console.log(logins);
   };
 
   const createPassword = () => {
@@ -31,7 +48,7 @@ function App() {
   };
 
   return (
-    <div>
+    <Grid>
       <Button
         className={classes.generator}
         variant="contained"
@@ -47,7 +64,7 @@ function App() {
         setPassword={setPassword}
         setUsername={setUsername}
         setWebsite={setWebsite}
-      ></InputField>
+      />
       <Button
         className={classes.generator}
         variant="contained"
@@ -56,7 +73,8 @@ function App() {
       >
         submit
       </Button>
-    </div>
+      <Logins logins={logins} />
+    </Grid>
   );
 }
 
