@@ -25,14 +25,23 @@ const Logins = ({ logins }) => {
           {logins.map((login) => (
             <TableRow>
               <TableCell component="th" scope="row">
-                {login.website}
+                {login.website ? login.website : "none"}
               </TableCell>
-              <TableCell align="right">{login.username}</TableCell>
               <TableCell align="right">
-                <CopyToClipboard text={login.password}>
-                  <button>Copy to Clipboard</button>
-                </CopyToClipboard>{" "}
-                {login.password}
+                {login.username ? login.username : "none"}
+              </TableCell>
+              <TableCell align="right">
+                {login.password ? (
+                  <div>
+                    <CopyToClipboard text={login.password}>
+                      <button>Copy to Clipboard</button>
+                    </CopyToClipboard>
+                    {"    "}
+                    {login.password}
+                  </div>
+                ) : (
+                  "none"
+                )}
               </TableCell>
             </TableRow>
           ))}

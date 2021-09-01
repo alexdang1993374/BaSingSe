@@ -13,23 +13,24 @@ function App() {
   const [website, setWebsite] = useState("");
   const [username, setUsername] = useState("");
   const [logins, setLogins] = useState([]);
+  const [reset, setReset] = useState(false);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/login")
       .then((res) => {
         setLogins(res.data.data);
+        console.log(logins);
       })
       .catch((error) => {
         console.log(error);
       });
 
     // setLogins(seed());
-  }, []);
+  }, [reset]);
 
   const generate = () => {
     setPassword(generator());
-    console.log(logins);
   };
 
   const createPassword = () => {
@@ -40,7 +41,7 @@ function App() {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        setReset(!reset);
       })
       .catch((error) => {
         console.log(error);
