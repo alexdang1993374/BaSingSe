@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -143,9 +144,10 @@ func EditLogin(c *gin.Context) {
 
 //DeleteLogin request
 func DeleteLogin(c *gin.Context) {
-	loginWebsite := c.Param("loginWebsite")
+	loginID := c.Param("loginId")
 	var login Login
-	query := "website='" + loginWebsite + "'"
+	query := "id='" + loginID + "'"
+	fmt.Print(query)
 	findErr := dbConnect.Model(&login).Where(query).Select()
 	if findErr != nil {
 		log.Printf("Error while getting a single login, Reason: %v\n", findErr)
@@ -155,7 +157,7 @@ func DeleteLogin(c *gin.Context) {
 		})
 		return
 	}
-	_, err := dbConnect.Model(&login).Where("website = ?", loginWebsite).Delete()
+	_, err := dbConnect.Model(&login).Where("id = ?", loginID).Delete()
 	if err != nil {
 		log.Printf("Error while deleting a single login, Reason: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{

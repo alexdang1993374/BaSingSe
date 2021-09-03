@@ -13,7 +13,7 @@ func Routes(router *gin.Engine) {
 	router.POST("/login", controllers.CreateLogin)
 	router.GET("/login/:loginWebsite", controllers.GetSingleLogin)
 	router.PUT("/login/:loginId", controllers.EditLogin)
-	router.DELETE("/login/:loginWebsite", controllers.DeleteLogin)
+	router.DELETE("/login/:loginId", controllers.DeleteLogin)
 }
 
 func welcome(c *gin.Context) {

@@ -1,0 +1,74 @@
+.text-input,
+.text-input__label {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.text-input {
+  font-size: 0.77rem;
+
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  color: var(--default-text-color);
+  padding: 0.25rem 0;
+}
+
+.text-input[readonly] {
+  background-color: var(--secondary-gray);
+  opacity: 1;
+}
+
+.text-input__container {
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+.text-input::placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+.text-input:focus::placeholder {
+  opacity: 1;
+}
+
+.text-input__label {
+  font-size: 0.5rem;
+}
+
+.text-input:placeholder-shown + .text-input__label {
+  cursor: text;
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 1rem) scale(1.5);
+}
+
+.text-input:not(:placeholder-shown) + .text-input__label,
+.text-input:focus + .text-input__label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+.text-input__secondary {
+  margin: 0 0.5rem;
+  align-self: center;
+}
+
+.text-input__secondary .text-input__label {
+  margin: 0;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.text-input__secondary .text-input {
+  text-align: center;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}

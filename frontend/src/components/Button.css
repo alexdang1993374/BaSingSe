@@ -1,0 +1,32 @@
+.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  transition: all 0.2s;
+  border-color: blue;
+  color: blue;
+  background-color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  background-color: blue;
+}
+
+.button.secondary {
+  color: green;
+  border-color: green;
+}
+
+.button.secondary:hover {
+  color: white;
+  background-color: green;
+}
