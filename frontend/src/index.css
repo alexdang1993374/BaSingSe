@@ -1,8 +1,12 @@
-html,
+/* html,
 body,
 #root,
 .app {
   height: 100%;
+} */
+
+html {
+  margin-top: 2.5rem;
 }
 
 body {
