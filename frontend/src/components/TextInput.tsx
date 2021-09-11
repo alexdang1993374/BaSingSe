@@ -25,11 +25,7 @@ const TextInput: React.FC<Props> = ({
   type = "text",
   value,
 }) => (
-  <article
-    className={`text-input__container ${
-      isSecondary ? "text-input__secondary" : ""
-    }`}
-  >
+  <article className={`text-input__container ${isSecondary ? "text-input__secondary" : ""}`}>
     <input
       className={`text-input ${className}`}
       id={id}
@@ -41,10 +37,7 @@ const TextInput: React.FC<Props> = ({
       value={value}
       required={true}
     />
-    <label
-      className={`text-input__label ${value && "text-input__label-shown"}`}
-      htmlFor={id}
-    >
+    <label className={`text-input__label ${value && "text-input__label-shown"}`} htmlFor={id}>
       {label}
     </label>
   </article>
