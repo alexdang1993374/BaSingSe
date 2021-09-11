@@ -89,6 +89,7 @@ function App() {
       <section className="button-group">
         <Button onClick={() => setPassword(generator())} text="Generate Password" />
         <Button isSecondary={true} onClick={createAndUpdateLogins} text="Create Login" />
+        <h3>Number of Logins: {logins.length}</h3>
       </section>
 
       <Table logins={logins} onClick={deleteLogin} />
