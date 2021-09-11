@@ -26,9 +26,9 @@ const Table: React.FC<Props> = ({ logins, onClick }) => (
       {logins.map((login) => (
         <tr>
           <td>
-            <a href="#" role="button" className="icon-button" onClick={() => onClick(login.id)}>
+            {/* <a href="#" role="button" className="icon-button" onClick={() => onClick(login.id)}>
               <img src={trash} alt="trash" />
-            </a>{" "}
+            </a>{" "} */}
             {login?.website || "none"}
           </td>
           <td>{login?.username || "none"}</td>
