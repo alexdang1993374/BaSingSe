@@ -46,7 +46,7 @@ func CreateLoginTable(db *pg.DB) error {
 //GetAllLogins in request
 func GetAllLogins(c *gin.Context) {
 	var login []Login
-	err := dbConnect.Model(&login).Select()
+	err := dbConnect.Model(&login).Order("website").Select()
 	if err != nil {
 		log.Printf("Error while getting all passwords, Reason: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{
